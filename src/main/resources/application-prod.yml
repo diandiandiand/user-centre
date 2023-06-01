@@ -9,3 +9,16 @@ spring:
   session:
     timeout: 86400
 
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+  global-config:
+    db-config:
+      logic-delete-field: isDelete    #mybatis-puls自带逻辑删除，写需要进行逻辑删除的字段
+      logic-delete-value: 1           #1表示已经删除
+      logic-not-delete-value: 0       #0表示没有删除
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
