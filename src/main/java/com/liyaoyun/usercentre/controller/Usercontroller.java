@@ -15,12 +15,14 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class Usercontroller implements UserConstant {
     @Resource
     private UserService userService;  //注入接口
@@ -41,7 +43,9 @@ public class Usercontroller implements UserConstant {
 
 
     @PostMapping("/login")
+
     public BaseResponse<User> func2(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest Request){
+
         //@RequestBody表示会将请求体赋值给userLoginRequest
         if(userLoginRequest==null){
             throw new BusinessException(ErrorCode.NULL_ERROR,"请求为空");
